@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🌾 Crop Prediction System - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script> <!-- Alpine.js -->
+</head>
+<body class="bg-green-50 flex flex-col items-center min-h-screen justify-center px-4">
+
+    <div class="bg-white shadow-2xl rounded-2xl p-10 max-w-xl w-full animate-fade-in" x-data="{ showDetails: false }">
+        <h1 class="text-3xl font-bold text-center mb-8 text-green-700">🌾 Crop Prediction System</h1>
+
+        <p class="text-gray-600 text-sm mb-6 text-center">
+            Fill in the details below to predict the best crop based on climate and soil conditions.
+        </p>
+
+        <form method="POST" action="/predict" class="space-y-5">
+            <div class="grid grid-cols-2 gap-4">
+
+                <div class="flex flex-col">
+                    <label for="temperature" class="text-sm font-medium text-gray-700 mb-1">Temperature (°C)</label>
+                    <input type="number" name="temperature" id="temperature" min="-10" max="60" step="any" placeholder="Temperature" required class="input">
+                </div>
+
+                <div class="flex flex-col">
+                    <label for="humidity" class="text-sm font-medium text-gray-700 mb-1">Humidity (%)</label>
+                    <input type="number" name="humidity" id="humidity" min="0" max="100" step="any" placeholder="Humidity" required class="input">
+                </div>
+
+                <div class="flex flex-col">
+                    <label for="ph" class="text-sm font-medium text-gray-700 mb-1">Soil pH (1-14)</label>
+                    <input type="number" name="ph" id="ph" min="1" max="14" step="any" placeholder="pH" required class="input">
+                </div>
+
+                <div class="flex flex-col">
+                    <label for="water_availability" class="text-sm font-medium text-gray-700 mb-1">Water Availability</label>
+                    <input type="number" name="water_availability" id="water_availability" min="0" step="any" placeholder="Water Availability" required class="input">
+                </div>
+
+                <div class="flex flex-col col-span-2">
+                    <label for="season" class="text-sm font-medium text-gray-700 mb-1">Season</label>
+                    <select name="season" id="season" required class="input">
+                        <option value="">Select Season</option>
+                        <option value="rainy">Rainy</option>
+                        <option value="winter">Winter</option>
+                        <option value="spring">Spring</option>
+                        <option value="summer">Summer</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col col-span-2">
+                    <label for="model_choice" class="text-sm font-medium text-gray-700 mb-1">Model Choice</label>
+                    <select name="model_choice" id="model_choice" class="input">
+                        <option value="Random Forest" selected>Random Forest (Best)</option>
+                        <option value="KNN">KNN</option>
+                        <option value="SVM Linear">SVM Linear</option>
+                        <option value="SVM NonLinear">SVM NonLinear</option>
+                        <option value="Naive Bayes">Naive Bayes</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-xl transition-all duration-300">
+                Predict 🚀
+            </button>
+        </form>
+
+        <!-- Toggle Details Button -->
+        <div class="mt-6 text-center">
+            <button 
+                @click="showDetails = !showDetails" 
+                x-text="showDetails ? 'Hide Details' : 'Show Details'" 
+                class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg transition duration-300">
+            </button>
+        </div>
+
+        <!-- Hidden Details Section -->
+        <div x-show="showDetails" x-transition.duration.500ms class="mt-6 text-left text-sm text-gray-500">
+            <h3 class="font-semibold mb-2">About the Fields:</h3>
+            <ul class="list-disc ml-5">
+                <li><strong>Temperature:</strong> Average temperature (°C) in the region.</li>
+                <li><strong>Humidity:</strong> Moisture percentage in the air.</li>
+                <li><strong>pH:</strong> Soil pH level (1: acidic, 7: neutral, 14: basic).</li>
+                <li><strong>Water Availability:</strong> Amount of water available for crops.</li>
+                <li><strong>Season:</strong> Current season affecting climate.</li>
+            </ul>
+
+            <h3 class="font-semibold mt-6 mb-2">Output Label:</h3>
+            <p>
+                The system will predict the best crop among:
+                <span class="block mt-2 italic">
+                    blackgram, chickpea, cotton, jute, kidneybeans, lentil, maize, mothbeans, mungbean, muskmelon, pigeonpeas, rice, watermelon.
+                </span>
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>

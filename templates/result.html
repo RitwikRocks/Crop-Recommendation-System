@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" x-data>
+<head>
+  <meta charset="UTF-8" />
+  <title>🌾 Prediction Result</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body class="font-poppins bg-pattern flex flex-col min-h-screen">
+  <!-- Header -->
+  <header class="w-full bg-green-700 text-white text-3xl font-bold py-4 text-center fixed top-0 z-50">
+    🌾 Crop Prediction System
+  </header>
+
+  <!-- Spacer for fixed header -->
+  <div class="h-16"></div>
+
+  <!-- Result Section -->
+  <main class="flex-grow flex items-center justify-center p-6">
+    <div class="w-full max-w-md bg-white shadow-2xl rounded-3xl p-10 text-center animate-card-entrance">
+      <h1 class="text-4xl font-bold text-green-800 mb-6">🌿 Your Predicted Crop</h1>
+      <p class="text-gray-600 text-base mb-8">Based on your inputs, we recommend growing:</p>
+      <div class="bg-green-100 text-green-800 font-extrabold rounded-2xl p-8 text-3xl shadow-inner mb-10">
+        {{ prediction.capitalize() }}
+      </div>
+      <a href="/" class="inline-block bg-gradient-to-r from-green-400 to-green-600 text-white font-semibold px-8 py-3 rounded-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+        🔙 Predict Again
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full bg-gradient-to-r from-green-600 to-green-800 text-white py-4 relative">
+    <!-- bottom border -->
+    <div class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-green-500 to-green-700 animate-slide-in"></div>
+    <div class="max-w-md mx-auto text-center space-y-2">
+      <p class="text-lg font-semibold">🌾 Crop Prediction System</p>
+      <p class="text-sm">
+        <a href="/about" class="inline-block px-3 py-1 bg-white bg-opacity-20 rounded-full hover:bg-opacity-40 transition duration-300 ease-in-out transform hover:scale-105">
+          About This Project
+        </a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

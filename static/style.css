@@ -1,0 +1,75 @@
+/* Custom font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0fdf4;
+}
+
+/* Subtle background pattern */
+.bg-pattern {
+    /* first layer: white at 40% opacity; second layer: the image */
+    background-image:
+      linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)),
+      url('/static/crop1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;        /* cover entire area */
+    background-position: center;    /* center the image */
+  }
+  
+
+/* Input styling */
+.input {
+  padding: 0.75rem 1rem;
+  border: 2px solid #d1fae5;
+  border-radius: 0.75rem;
+  background-color: #f9fafb;
+  transition: all 0.3s ease;
+}
+.input:focus {
+  border-color: #34d399;
+  background-color: #ffffff;
+  outline: none;
+}
+footer {
+    flex-shrink: 0;
+  }
+  
+  /* Hover-expand the footer’s padding */
+footer {
+    transition: padding-bottom 0.3s ease;
+  }
+footer:hover {
+    padding-bottom: 1rem; /* expands from pb-12 to pb-16 */
+}
+
+/* Card entrance animation */
+@keyframes cardEntrance {
+  0%   { opacity: 0; transform: translateY(30px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0)    scale(1); }
+}
+.animate-card-entrance {
+  animation: cardEntrance 0.6s ease-out both;
+}
+
+/* Tailwind override for fade-in (if needed) */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out both;
+}
+
+/* Slide-in the bottom border from left */
+@keyframes slideIn {
+    from { width: 0; }
+    to   { width: 100%; }
+  }
+  .animate-slide-in {
+    animation: slideIn 1s ease-out forwards;
+  }
+  
+
+  
+  
